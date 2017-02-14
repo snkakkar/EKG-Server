@@ -13,7 +13,9 @@
 # limitations under the License.
 
 import webapp2
+import jinja2
 
+#Jinja2 import and setup
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
