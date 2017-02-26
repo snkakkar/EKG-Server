@@ -2,6 +2,9 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+inbound_services:
+- mail
+
 libraries:
 - name: webapp2
   version: latest
@@ -11,3 +14,9 @@ libraries:
 handlers:
 - url: /.*
   script: main.app
+
+# [START handle_incoming_email]
+#- url: /_ah/mail/.+
+#  script: handle_incoming_email.app
+#  login: admin
+# [END handle_incoming_email]

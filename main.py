@@ -12,15 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#Basic Python Modules
+import os
+
+#Google App Engine Modules
 import webapp2
 import jinja2
 
-#Jinja2 import and setup
+env = jinja2.Environment(loader = jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('Hello, LongWave is here!')
+        template = env.get_template('/html/temp_login.html')
+        template_values={'name':'LongWave'}
+        self.response.out.write(template.render(template_values))
 
 
 app = webapp2.WSGIApplication([
