@@ -18,16 +18,20 @@ import os
 #Google App Engine Modules
 import webapp2
 import jinja2
+import logging
 
+#Global Variables
 env = jinja2.Environment(loader = jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-class MainPage(webapp2.RequestHandler):
+class Login(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('/html/temp_login.html')
-        template_values={'name':'LongWave'}
-        self.response.out.write(template.render(template_values))
+        template = env.get_template('/html/mainPage.html')
+        self.response.out.write(template.render())
+
+    def post(self):
+        pass
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainPage),
+    ('/', Login),
 ], debug=True)
