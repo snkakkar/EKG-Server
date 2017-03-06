@@ -14,8 +14,18 @@ libraries:
 handlers:
 - url: /css
   static_dir: css
+- url: /js
+  static_dir: js
+- url: /rsrc
+  static_dir: rsrc
+  
+- url: /_ah/mail/.+
+  script: handle_incoming_email.app
+  login: admin
+
 - url: /.*
   script: main.app
+
 
 # [START handle_incoming_email]
 #- url: /_ah/mail/.+
