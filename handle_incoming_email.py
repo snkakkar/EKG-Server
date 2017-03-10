@@ -4,7 +4,7 @@ import webapp2
 from google.appengine.ext.webapp.mail_handlers import InboundMailHandler
 
 # Project Specific Modules
-from ndb_entities.py import EmailPacket
+from ndb_entities import EmailPacket
 
 class LogSenderHandler(InboundMailHandler):
     def receive(self, mail_message):
@@ -20,7 +20,7 @@ class LogSenderHandler(InboundMailHandler):
             plaintext = body.decode()
             logging.info("Plain text body of length %d.", len(plaintext))
 
-        newEntry = EmailPacket(source=mail_message.sender, body=plaintext_bodies)
+        newEntry = EmailPacket(source=str(mail_message.sender), body=str(plaintext_bodies))
         newKey = newEntry.put()
 
 app = webapp2.WSGIApplication([LogSenderHandler.mapping()], debug=True)
