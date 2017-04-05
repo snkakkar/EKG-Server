@@ -18,7 +18,9 @@ handlers:
   static_dir: js
 - url: /rsrc
   static_dir: rsrc
-  
+- url: /bootstrap_vendor
+  static_dir: bootstrap_vendor
+
 - url: /_ah/mail/.+
   script: handle_incoming_email.app
   login: admin
